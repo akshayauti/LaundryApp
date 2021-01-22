@@ -5,7 +5,6 @@ import 'package:LaundryApp/OverviewPage.dart';
 import 'package:LaundryApp/PhotosPage.dart';
 import 'package:LaundryApp/ReviewPage.dart';
 
-
 /// This is the stateful widget that the main application instantiates.
 class Overview extends StatefulWidget {
   Overview({Key key}) : super(key: key);
@@ -17,8 +16,10 @@ class Overview extends StatefulWidget {
 /// This is the private State class that goes with MyStatefulWidget.
 class _Overview extends State<Overview> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
   final List<Widget> _widgetOptions = <Widget>[
     OverviewPage(),
     MenuPage(),
@@ -38,8 +39,6 @@ class _Overview extends State<Overview> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      
-
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -63,9 +62,7 @@ class _Overview extends State<Overview> {
         selectedItemColor: Colors.amber[800],
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
-  
       ),
     );
   }
 }
-

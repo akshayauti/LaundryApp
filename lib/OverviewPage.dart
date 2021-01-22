@@ -11,6 +11,7 @@ class _OverviewPageState extends State<OverviewPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Stack(children: [
               Container(
@@ -81,7 +82,7 @@ class _OverviewPageState extends State<OverviewPage> {
                         ),
                       ),
                       Spacer(),
-                      Text( 
+                      Text(
                         "5.0",
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
@@ -130,7 +131,7 @@ class _OverviewPageState extends State<OverviewPage> {
                         data: IconThemeData(
                           color: Colors.green,
                         ),
-                        child: Icon(Icons.call  ),
+                        child: Icon(Icons.call),
                       ),
                     ],
                   ),
