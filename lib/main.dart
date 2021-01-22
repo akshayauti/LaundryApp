@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'overview.dart';
 
-void main() => MyApp();
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   AssetImage akshay = AssetImage("images/badge.png");
