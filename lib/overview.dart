@@ -35,9 +35,6 @@ class _Overview extends State<Overview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Aruns Special Laundry'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
