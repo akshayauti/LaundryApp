@@ -9,6 +9,9 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="LaundryApp"
         android:icon="@mipmap/ic_launcher">
+        >
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBwueQVNDXXWQ-uSmCHezBLI4rwFCK1o3o"/>  
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
