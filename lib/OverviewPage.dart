@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OverviewPage extends StatefulWidget {
   @override
@@ -6,6 +7,18 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
+  // to Call the setupLocator() function of CallAndMessageService Class
+  final String number = '+91 95958 39575';
+  Future<void> _launched;
+
+  Future<void> _makePhoneCall(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +60,7 @@ class _OverviewPageState extends State<OverviewPage> {
               // color: Colors.pink,
 
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -81,7 +94,7 @@ class _OverviewPageState extends State<OverviewPage> {
                         ),
                       ),
                       Spacer(),
-                      Text( 
+                      Text(
                         "5.0",
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
@@ -126,11 +139,20 @@ class _OverviewPageState extends State<OverviewPage> {
                         ),
                       ),
                       Spacer(),
-                      IconTheme(
-                        data: IconThemeData(
-                          color: Colors.green,
-                        ),
-                        child: Icon(Icons.call  ),
+                      // Icon(
+                      //   data: IconButton(
+                      //     color: Colors.green,
+                      //   ),
+                      //   child: Icon(Icons.call  ),
+
+                      // ),\
+                      IconButton(
+                        icon: Icon(Icons.call),
+                        color: Colors.green,
+                        tooltip: 'Increase volume by 10',
+                        onPressed: () => setState(() {
+                          _launched = _makePhoneCall('tel:$number');
+                        }),
                       ),
                     ],
                   ),
