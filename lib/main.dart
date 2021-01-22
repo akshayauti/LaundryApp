@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'overview.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+      MyApp(),
+    );
 
 class MyApp extends StatelessWidget {
-  AssetImage akshay = AssetImage("images/badge.png");
+  // AssetImage akshay = AssetImage("images/badge.png");
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,9 +15,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.yellow,
+        primaryColor: Colors.black,
       ),
-      home: MyHomePage(),
+      initialRoute: '/',
       routes: <String, WidgetBuilder>{
+        "/": (context) => MyHomePage(),
         "/overview": (context) => Overview(),
       },
     );

@@ -41,12 +41,13 @@ class _Overview extends State<Overview> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
+      
+
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
@@ -65,7 +66,9 @@ class _Overview extends State<Overview> {
         selectedItemColor: Colors.amber[800],
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
+  
       ),
     );
   }
 }
+
