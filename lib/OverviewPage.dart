@@ -16,10 +16,11 @@ class _OverviewPageState extends State<OverviewPage> {
   GoogleMapController _controller;
 
   CameraPosition _cameraPosition =
-      CameraPosition(target: LatLng(18.5204, 73.8567), zoom: 15.0);
-  LatLng _laundry_pos = LatLng(18.5204, 73.8567);
+      CameraPosition(target: LatLng(18.5732367, 73.9036081), zoom: 15.0);
+  LatLng _laundry_pos = LatLng(18.5732367, 73.9036081);
 
   Set<Marker> _marker = HashSet<Marker>();
+
   Future<void> _makePhoneCall(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -32,9 +33,10 @@ class _OverviewPageState extends State<OverviewPage> {
   void initState() {
     super.initState();
     setState(() {
+      // to pin point the location or mark the location
       _marker.add(Marker(
         markerId: MarkerId("marker_id_1"),
-        position: LatLng(18.5204, 73.8567),
+        position: LatLng(18.5732367, 73.9036081),
       ));
     });
   }

@@ -10,8 +10,9 @@
         android:label="LaundryApp"
         android:icon="@mipmap/ic_launcher">
         >
+        <!--Google map Api Key --> 
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyD9oGp1wsaJkJ1DuFlhv8Ml5cERXIqNo4Y"/>  
+               android:value="AIzaSyBZb0unoIU-a3scIj4fCRDN3BPxPWSpaLY"/>  
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
