@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'dart:collection';
 
 class OverviewPage extends StatefulWidget {
   @override
@@ -11,12 +13,30 @@ class _OverviewPageState extends State<OverviewPage> {
   final String number = '+91 95958 39575';
   Future<void> _launched;
 
+  GoogleMapController _controller;
+
+  CameraPosition _cameraPosition =
+      CameraPosition(target: LatLng(18.5204, 73.8567), zoom: 15.0);
+  LatLng _laundry_pos = LatLng(18.5204, 73.8567);
+
+  Set<Marker> _marker = HashSet<Marker>();
   Future<void> _makePhoneCall(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _marker.add(Marker(
+        markerId: MarkerId("marker_id_1"),
+        position: LatLng(18.5204, 73.8567),
+      ));
+    });
   }
 
   @override
@@ -31,10 +51,8 @@ class _OverviewPageState extends State<OverviewPage> {
                 height: MediaQuery.of(context).size.height * 0.35,
                 width: double.infinity,
                 // color: Colors.lightGreen,
-                child: Expanded(
-                  child: Image(
-                    image: AssetImage("images/LaundryImg.jpg"),
-                  ),
+                child: Image(
+                  image: AssetImage("images/LaundryImg.jpg"),
                 ),
               ),
               new Positioned(
@@ -71,7 +89,7 @@ class _OverviewPageState extends State<OverviewPage> {
                         "Arun's Special Laundry",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 22.0,
+                          fontSize: 20.0,
                         ),
                       ),
                       Spacer(),
@@ -195,10 +213,61 @@ class _OverviewPageState extends State<OverviewPage> {
               ),
             ),
             Container(
-              width: double.infinity,
+              width: MediaQuery.of(context).size.width * 0.9,
               height: 200,
-              color: Colors.lightBlue,
+              // color: Colors.lightBlue,
+              child: GoogleMap(
+                initialCameraPosition: this._cameraPosition,
+                zoomGesturesEnabled: true,
+                markers: _marker,
+                onMapCreated: (controller) {
+                  setState(() {
+                    this._controller = controller;
+                  });
+                },
+                onTap: (coordinates) {
+                  print("tapped");
+                  _controller
+                      .animateCamera(CameraUpdate.newLatLng(coordinates));
+                },
+              ),
             ),
+            Padding(padding: EdgeInsets.all(5.0)),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Other info",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.cancel,
+                        color: Colors.red,
+                      ),
+                      Text(
+                        "Cash on delivery",
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.check_circle,
+                        color: Colors.green,
+                      ),
+                      Text(
+                        "Online",
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
