@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+
 class ReviewPage extends StatefulWidget {
   @override
   _ReviewPage createState() => _ReviewPage();
 }
 
 class _ReviewPage extends State<ReviewPage> {
+  ScrollController _controller;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Stack(children: [
               Container(
@@ -87,7 +91,7 @@ class _ReviewPage extends State<ReviewPage> {
                           MaterialButton(
                             color: Colors.yellow,
                             child: Text("Add Review +"),
-                            onPressed: (){
+                            onPressed: () {
                               Navigator.of(context).pushNamed('/addReview');
                             },
                           ),
@@ -116,11 +120,146 @@ class _ReviewPage extends State<ReviewPage> {
                   elevation: 0.0, //No shadow
                 ),
               ),
-            ])
+            ]),
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 0.0, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                  ),
+                  Text(
+                    "Reviews",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  color: Colors.lightBlue[50],
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black45, width: 1),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  margin: EdgeInsets.fromLTRB(10, 2, 2, 10),
+                  borderOnForeground: true,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(padding: EdgeInsets.all(5)),
+                      Row(
+                        children: [
+                          Padding(padding: EdgeInsets.all(10)),
+                          Text(
+                            "Akshay Auti",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(padding: EdgeInsets.all(10)),
+                          IconTheme(
+                            data: IconThemeData(
+                              color: Colors.amber,
+                              size: 18,
+                            ),
+                            child: DisplayStarRating(value: 3),
+                          ),
+                          Text("  "),
+                          Text(
+                            "3.0",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(padding: EdgeInsets.all(10)),
+                          Expanded(
+                            child: Text(
+                              "Nostrud sint adipisicing reprehenderit pariatur non qui Lorem excepteur. Pariatur ut laborum culpa aute reprehenderit laboris eu voluptate in. Dolore deserunt fugiat elit do dolore sit.",
+                              style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                              ),
+                              textAlign: TextAlign.left,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                            ),
+                          )
+                        ],
+                      ),
+                      Divider(
+                        thickness: 2,
+                        color: Colors.black45,
+                      ),
+                      Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Liked",
+                              style: TextStyle(
+                                color: Colors.yellow,
+                                fontSize: 18,
+                              ),
+                            ),
+                            Padding(padding: EdgeInsets.all(5.0)),
+                            Icon(
+                              Icons.thumb_up,
+                              color: Colors.yellow,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(4.0),
+                      )
+                    ],
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),
-      
+    );
+  }
+}
+
+class DisplayStarRating extends StatelessWidget {
+  final int value;
+  const DisplayStarRating({Key key, this.value = 0})
+      : assert(value != null),
+        super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: List.generate(5, (index) {
+        return Icon(
+          index < value ? Icons.star : Icons.star_border,
+        );
+      }),
     );
   }
 }
