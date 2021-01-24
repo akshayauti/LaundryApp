@@ -170,7 +170,7 @@ class _addReviewState extends State<addReview> {
                             borderRadius: BorderRadius.circular(10)),
                         minWidth: 100,
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/reviewPage');
+                          Navigator.of(context).pop();
                         },
                       ),
                     ],

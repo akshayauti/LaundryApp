@@ -9,6 +9,13 @@ class _ReviewPage extends State<ReviewPage> {
   ScrollController _controller;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = ScrollController();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -122,7 +129,7 @@ class _ReviewPage extends State<ReviewPage> {
               ),
             ]),
             Container(
-              margin: EdgeInsets.fromLTRB(10, 0.0, 0, 0),
+              margin: EdgeInsets.fromLTRB(10, 0.0, 0.0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -140,103 +147,109 @@ class _ReviewPage extends State<ReviewPage> {
                 ],
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  color: Colors.lightBlue[50],
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.black45, width: 1),
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  margin: EdgeInsets.fromLTRB(10, 2, 2, 10),
-                  borderOnForeground: true,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(padding: EdgeInsets.all(5)),
-                      Row(
-                        children: [
-                          Padding(padding: EdgeInsets.all(10)),
-                          Text(
-                            "Akshay Auti",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(padding: EdgeInsets.all(10)),
-                          IconTheme(
-                            data: IconThemeData(
-                              color: Colors.amber,
-                              size: 18,
-                            ),
-                            child: DisplayStarRating(value: 3),
-                          ),
-                          Text("  "),
-                          Text(
-                            "3.0",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(padding: EdgeInsets.all(10)),
-                          Expanded(
-                            child: Text(
-                              "Nostrud sint adipisicing reprehenderit pariatur non qui Lorem excepteur. Pariatur ut laborum culpa aute reprehenderit laboris eu voluptate in. Dolore deserunt fugiat elit do dolore sit.",
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                              ),
-                              textAlign: TextAlign.left,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 5,
-                            ),
-                          )
-                        ],
-                      ),
-                      Divider(
-                        thickness: 2,
-                        color: Colors.black45,
-                      ),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+            Container(
+              child: ListView.builder(
+                controller: _controller,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    color: Colors.grey[100],
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black45, width: 1),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    margin: EdgeInsets.fromLTRB(15, 2, 15, 10),
+                    borderOnForeground: true,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(padding: EdgeInsets.all(5)),
+                        Row(
                           children: [
+                            Padding(padding: EdgeInsets.all(10)),
                             Text(
-                              "Liked",
+                              "Akshay Auti",
                               style: TextStyle(
-                                color: Colors.yellow,
+                                fontWeight: FontWeight.bold,
                                 fontSize: 18,
                               ),
                             ),
-                            Padding(padding: EdgeInsets.all(5.0)),
-                            Icon(
-                              Icons.thumb_up,
-                              color: Colors.yellow,
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(padding: EdgeInsets.all(10)),
+                            IconTheme(
+                              data: IconThemeData(
+                                color: Colors.amber,
+                                size: 18,
+                              ),
+                              child: DisplayStarRating(value: 3),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(3),
+                            ),
+                            Text(
+                              "3.0",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(4.0),
-                      )
-                    ],
-                  ),
-                );
-              },
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(padding: EdgeInsets.all(10)),
+                            Expanded(
+                              child: Text(
+                                "Nostrud sint adipisicing reprehenderit pariatur non qui Lorem excepteur. Pariatur ut laborum culpa aute reprehenderit laboris eu voluptate in. Dolore deserunt fugiat elit do dolore sit.",
+                                style: TextStyle(
+                                  fontStyle: FontStyle.normal,
+                                ),
+                                textAlign: TextAlign.left,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 5,
+                              ),
+                            )
+                          ],
+                        ),
+                        Divider(
+                          thickness: 2,
+                          color: Colors.black45,
+                        ),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Liked",
+                                style: TextStyle(
+                                  color: Colors.yellow,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Padding(padding: EdgeInsets.all(5.0)),
+                              Icon(
+                                Icons.thumb_up,
+                                color: Colors.yellow,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(4.0),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
             )
           ],
         ),
