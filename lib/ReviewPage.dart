@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class ReviewPage extends StatefulWidget {
   @override
   _ReviewPage createState() => _ReviewPage();
@@ -82,6 +81,18 @@ class _ReviewPage extends State<ReviewPage> {
                           ),
                         ],
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          MaterialButton(
+                            color: Colors.yellow,
+                            child: Text("Add Review +"),
+                            onPressed: (){
+                              Navigator.of(context).pushNamed('/addReview');
+                            },
+                          ),
+                        ],
+                      ),
                       Divider(
                         color: Colors.grey[400],
                         thickness: 1,
@@ -109,6 +120,7 @@ class _ReviewPage extends State<ReviewPage> {
           ],
         ),
       ),
+      
     );
   }
 }
