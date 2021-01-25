@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Icons.close,
                           color: Colors.black,
                           size: 20,
-                        git ),
+                        ),
                         onPressed: () {
                           Navigator.pop(context);
                         },
