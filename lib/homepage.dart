@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       minWidth: 100,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.pushNamed(context, '/overview');
                       },
                     ),
                   ],
@@ -82,6 +82,28 @@ class _MyHomePageState extends State<MyHomePage> {
         // Otherwise, the height will be half the height of the screen.
         return Wrap(
           children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.close,
+                          color: Colors.black,
+                          size: 20,
+                        git ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
             ListTile(
               title: Text(
                 'Header',
