@@ -63,6 +63,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.pushNamed(context, '/overview');
                       },
                     ),
+                    Spacer(),
+                    MaterialButton(
+                      color: Colors.yellow,
+                      child: Text("Launch Photos"),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      minWidth: 100,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/photos');
+                      },
+                    ),
                   ],
                 ),
               ],
@@ -94,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Icons.close,
                           color: Colors.black,
                           size: 20,
-                        git ),
+                        ),
                         onPressed: () {
                           Navigator.pop(context);
                         },

@@ -1,5 +1,6 @@
 import 'package:LaundryApp/ReviewPage.dart';
 import 'package:LaundryApp/addReview.dart';
+import 'package:LaundryApp/photos.dart';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'overview.dart';
@@ -26,8 +27,9 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         "/": (context) => MyHomePage(),
         "/overview": (context) => Overview(),
-        "/addReview":(context) => addReview(),
-        "/reviewPage":(context) => ReviewPage()
+        "/addReview": (context) => addReview(),
+        "/reviewPage": (context) => ReviewPage(),
+        "/photos": (context) => Photos()
       },
     );
   }
