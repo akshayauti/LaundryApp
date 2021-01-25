@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vertical_tabs/vertical_tabs.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -80,56 +81,124 @@ class _MyHomePageState extends State<MyHomePage> {
         final theme = Theme.of(context);
         // Using Wrap makes the bottom sheet height the height of the content.
         // Otherwise, the height will be half the height of the screen.
-        return Wrap(
-          children: [
-            Container(
-              margin: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.close,
-                          color: Colors.black,
-                          size: 20,
-                        git ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      )
-                    ],
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: SafeArea(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.close),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    )
+                  ],
+                ),
+                Expanded(
+                  child: Container(
+                    child: VerticalTabs(
+                      contentScrollAxis: Axis.vertical,
+                      tabsWidth: 150,
+                      tabs: <Tab>[
+                        Tab(child: Text('Flutter'), icon: Icon(Icons.phone)),
+                        Tab(child: Text('Dart')),
+                        Tab(
+                          child: Container(
+                            margin: EdgeInsets.only(bottom: 1),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.favorite),
+                                SizedBox(width: 25),
+                                Text('Javascript'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Tab(child: Text('NodeJS')),
+                        Tab(child: Text('PHP')),
+                        Tab(child: Text('HTML 5')),
+                        Tab(child: Text('CSS 3')),
+                      ],
+                      contents: <Widget>[
+                        tabsContent('Flutter',
+                            'Change page by scrolling content is disabled in settings. Changing contents pages is only available via tapping on tabs'),
+                        tabsContent('Dart'),
+                        tabsContent('Javascript'),
+                        tabsContent('NodeJS'),
+                        Container(
+                            color: Colors.black12,
+                            child: ListView.builder(
+                                itemCount: 10,
+                                itemExtent: 100,
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                    margin: EdgeInsets.all(10),
+                                    color: Colors.white30,
+                                  );
+                                })),
+                        tabsContent('HTML 5'),
+                        Container(
+                            color: Colors.black12,
+                            child: ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                scrollDirection: Axis.vertical,
+                                itemCount: 10,
+                                itemExtent: 100,
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                    margin: EdgeInsets.all(10),
+                                    color: Colors.white30,
+                                  );
+                                })),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+                // Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text("Clear All"),
+                    MaterialButton(
+                      onPressed: () {},
+                      color: Colors.yellow,
+                      child: Text("Apply"),
+                    )
+                  ],
+                )
+              ],
             ),
-            ListTile(
-              title: Text(
-                'Header',
-                style: theme.textTheme.subtitle1
-                    .copyWith(color: theme.colorScheme.onPrimary),
-              ),
-              tileColor: theme.colorScheme.primary,
-            ),
-            ListTile(
-              title: Text('Title 1'),
-            ),
-            ListTile(
-              title: Text('Title 2'),
-            ),
-            ListTile(
-              title: Text('Title 3'),
-            ),
-            ListTile(
-              title: Text('Title 4'),
-            ),
-            ListTile(
-              title: Text('Title 5'),
-            ),
-          ],
+          ),
         );
       },
+    );
+  }
+
+  Widget tabsContent(String caption, [String description = '']) {
+    return Container(
+      // height: MediaQuery.of(context).size.height * 0.4,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.all(20),
+      color: Colors.black12,
+      child: Column(
+        children: <Widget>[
+          Text(
+            caption,
+            style: TextStyle(fontSize: 25),
+          ),
+          Divider(
+            height: 20,
+            color: Colors.black45,
+          ),
+          Text(
+            description,
+            style: TextStyle(fontSize: 15, color: Colors.black87),
+          ),
+        ],
+      ),
     );
   }
 }

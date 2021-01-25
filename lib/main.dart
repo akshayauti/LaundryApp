@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         "/": (context) => MyHomePage(),
         "/overview": (context) => Overview(),
-        "/addReview":(context) => addReview(),
-        "/reviewPage":(context) => ReviewPage()
+        "/addReview": (context) => addReview(),
+        "/reviewPage": (context) => ReviewPage()
       },
     );
   }
