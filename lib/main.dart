@@ -1,6 +1,6 @@
 import 'package:LaundryApp/ReviewPage.dart';
 import 'package:LaundryApp/addReview.dart';
-import 'package:LaundryApp/photos.dart';
+import 'package:LaundryApp/pages/MenuPhotos/photos.dart';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'overview.dart';
