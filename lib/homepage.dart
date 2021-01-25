@@ -11,16 +11,103 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Laundry App"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.sort,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          )
+        ],
       ),
-      body: Center(
-        child: MaterialButton(
-          color: Colors.yellow,
-          child: Text("More info"),
-          onPressed: () {
-            Navigator.of(context).pushNamed('/overview');
-          },
-        ),
+
+      // Use a Builder to get a context within the Scaffold.
+      body: Builder(
+        builder: (context) {
+          return Container(
+            width: double.infinity,
+            margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                        icon: Icon(Icons.sort),
+                        onPressed: () {
+                          startAddFilter(context);
+                        }),
+                    Text(
+                      "Filter",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18.0,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    MaterialButton(
+                      color: Colors.yellow,
+                      child: Text("More Info"),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      minWidth: 100,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
+    );
+  }
+
+  void startAddFilter(BuildContext context) {
+    showBottomSheet(
+      context: context,
+      builder: (context) {
+        final theme = Theme.of(context);
+        // Using Wrap makes the bottom sheet height the height of the content.
+        // Otherwise, the height will be half the height of the screen.
+        return Wrap(
+          children: [
+            ListTile(
+              title: Text(
+                'Header',
+                style: theme.textTheme.subtitle1
+                    .copyWith(color: theme.colorScheme.onPrimary),
+              ),
+              tileColor: theme.colorScheme.primary,
+            ),
+            ListTile(
+              title: Text('Title 1'),
+            ),
+            ListTile(
+              title: Text('Title 2'),
+            ),
+            ListTile(
+              title: Text('Title 3'),
+            ),
+            ListTile(
+              title: Text('Title 4'),
+            ),
+            ListTile(
+              title: Text('Title 5'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
