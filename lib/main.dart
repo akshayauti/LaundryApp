@@ -1,9 +1,9 @@
 import 'package:LaundryApp/ReviewPage.dart';
 import 'package:LaundryApp/addReview.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'overview.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 void main() => runApp(
       MyApp(),

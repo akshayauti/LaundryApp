@@ -6,7 +6,10 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+enum SingingCharacter { filter1, filter2, filter3, filter4, filter5 }
+
 class _MyHomePageState extends State<MyHomePage> {
+  SingingCharacter _character = SingingCharacter.filter1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,20 +150,87 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ],
                       contents: <Widget>[
+                        Container(
+                          color: Colors.black12,
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: Radio(
+                                  value: SingingCharacter.filter1,
+                                  groupValue: this._character,
+                                  onChanged: (SingingCharacter value) {
+                                    setState(() {
+                                      this._character = value;
+                                      Navigator.of(context).pop();
+                                      return startAddFilter(context);
+                                    });
+                                  },
+                                ),
+                                title: Text("Filter 1"),
+                              ),
+                              ListTile(
+                                leading: Radio(
+                                  value: SingingCharacter.filter2,
+                                  onChanged: (SingingCharacter value) {
+                                    setState(() {
+                                      this._character = value;
+                                      print(_character.toString());
+                                      Navigator.of(context).pop();
+                                      return startAddFilter(context);
+                                    });
+                                  },
+                                  groupValue: this._character,
+                                ),
+                                title: Text("Filter 2"),
+                              ),
+                              ListTile(
+                                leading: Radio(
+                                  value: SingingCharacter.filter3,
+                                  onChanged: (SingingCharacter value) {
+                                    setState(() {
+                                      this._character = value;
+                                      Navigator.of(context).pop();
+                                      return startAddFilter(context);
+                                    });
+                                  },
+                                  groupValue: this._character,
+                                ),
+                                title: Text("Filter 3"),
+                              ),
+                              ListTile(
+                                leading: Radio(
+                                  value: SingingCharacter.filter4,
+                                  groupValue: this._character,
+                                  onChanged: (SingingCharacter value) {
+                                    setState(() {
+                                      this._character = value;
+                                      Navigator.of(context).pop();
+                                      return startAddFilter(context);
+                                    });
+                                  },
+                                ),
+                                title: Text("Filter 4"),
+                              ),
+                              ListTile(
+                                leading: Radio(
+                                  value: SingingCharacter.filter5,
+                                  groupValue: this._character,
+                                  onChanged: (SingingCharacter value) {
+                                    setState(() {
+                                      this._character = value;
+                                      Navigator.of(context).pop();
+                                      return startAddFilter(context);
+                                    });
+                                  },
+                                ),
+                                title: Text("Filter 5"),
+                              ),
+                            ],
+                          ),
+                        ),
                         tabsContent('Sort By',
                             'Change page by scrolling content is disabled in settings. Changing contents pages is only available via tapping on tabs'),
                         tabsContent('Dart'),
-                        Container(
-                            color: Colors.black12,
-                            child: ListView.builder(
-                                itemCount: 10,
-                                itemExtent: 100,
-                                itemBuilder: (context, index) {
-                                  return Container(
-                                    margin: EdgeInsets.all(10),
-                                    color: Colors.white30,
-                                  );
-                                })),
                         tabsContent('HTML 5'),
                         Container(
                             color: Colors.black12,
