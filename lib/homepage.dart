@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Using Wrap makes the bottom sheet height the height of the content.
         // Otherwise, the height will be half the height of the screen.
         return Container(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.6,
           child: SafeArea(
             child: Column(
               children: <Widget>[
@@ -99,35 +99,57 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Expanded(
                   child: Container(
+                    margin: EdgeInsets.all(10),
                     child: VerticalTabs(
+                      indicatorColor: Colors.yellow,
                       contentScrollAxis: Axis.vertical,
                       tabsWidth: 150,
                       tabs: <Tab>[
-                        Tab(child: Text('Flutter'), icon: Icon(Icons.phone)),
-                        Tab(child: Text('Dart')),
                         Tab(
-                          child: Container(
-                            margin: EdgeInsets.only(bottom: 1),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(Icons.favorite),
-                                SizedBox(width: 25),
-                                Text('Javascript'),
+                          child: SizedBox(
+                            child: Column(
+                              children: [
+                                Text('Sort By'),
+                                Padding(padding: EdgeInsets.only(top: 3)),
+                                Text(
+                                  "Popularity",
+                                  style: TextStyle(
+                                      fontSize: 10, color: Colors.amber),
+                                )
                               ],
                             ),
+                            height: 40,
                           ),
                         ),
-                        Tab(child: Text('NodeJS')),
-                        Tab(child: Text('PHP')),
-                        Tab(child: Text('HTML 5')),
-                        Tab(child: Text('CSS 3')),
+                        Tab(
+                          child: SizedBox(
+                            child: Text("Services"),
+                            height: 40,
+                          ),
+                        ),
+                        Tab(
+                          child: SizedBox(
+                            child: Text("Rating"),
+                            height: 40,
+                          ),
+                        ),
+                        Tab(
+                          child: SizedBox(
+                            child: Text("Cost"),
+                            height: 40,
+                          ),
+                        ),
+                        Tab(
+                          child: SizedBox(
+                            child: Text("More Filters"),
+                            height: 40,
+                          ),
+                        ),
                       ],
                       contents: <Widget>[
-                        tabsContent('Flutter',
+                        tabsContent('Sort By',
                             'Change page by scrolling content is disabled in settings. Changing contents pages is only available via tapping on tabs'),
                         tabsContent('Dart'),
-                        tabsContent('Javascript'),
-                        tabsContent('NodeJS'),
                         Container(
                             color: Colors.black12,
                             child: ListView.builder(
@@ -145,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: ListView.builder(
                                 physics: NeverScrollableScrollPhysics(),
                                 scrollDirection: Axis.vertical,
-                                itemCount: 10,
+                                itemCount: 3,
                                 itemExtent: 100,
                                 itemBuilder: (context, index) {
                                   return Container(
