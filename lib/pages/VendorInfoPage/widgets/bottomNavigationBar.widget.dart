@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:LaundryApp/MenuPage.dart';
-import 'package:LaundryApp/OverviewPage.dart';
+import 'package:LaundryApp/pages/VendorInfoPage/OverviewPage/page/OverviewPage.dart';
 import 'package:LaundryApp/PhotosPage.dart';
 import 'package:LaundryApp/ReviewPage.dart';
 
-/// This is the stateful widget that the main application instantiates.
-class Overview extends StatefulWidget {
-  Overview({Key key}) : super(key: key);
-
+class BottomNaviagtionBar extends StatefulWidget {
   @override
-  _Overview createState() => _Overview();
+  _BottomNaviagtionBarState createState() => _BottomNaviagtionBarState();
 }
 
-/// This is the private State class that goes with MyStatefulWidget.
-class _Overview extends State<Overview> {
+class _BottomNaviagtionBarState extends State<BottomNaviagtionBar> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
     fontSize: 30,
@@ -32,7 +28,6 @@ class _Overview extends State<Overview> {
       _selectedIndex = index;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,15 +42,15 @@ class _Overview extends State<Overview> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Menu',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'School',
+            label: 'Photos',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.photo_album),
-            label: 'Photos',
+            label: 'Reviews',
           ),
         ],
         currentIndex: _selectedIndex,

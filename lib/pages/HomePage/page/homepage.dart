@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       minWidth: 100,
                       onPressed: () {
-                        Navigator.pushNamed(context, '/overview');
+                        Navigator.pushNamed(context, '/vendorInfoPage');
                       },
                     ),
                   ],

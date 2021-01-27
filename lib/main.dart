@@ -2,8 +2,8 @@ import 'package:LaundryApp/ReviewPage.dart';
 import 'package:LaundryApp/addReview.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:flutter/material.dart';
-import 'homepage.dart';
-import 'overview.dart';
+import 'pages/HomePage/page/homepage.dart';
+import 'package:LaundryApp/pages/VendorInfoPage/page/vendorInfoPage.dart';
 
 void main() => runApp(
       MyApp(),
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         "/": (context) => MyHomePage(),
-        "/overview": (context) => Overview(),
+        "/vendorInfoPage": (context) => VendorInfoPage(),
         "/addReview": (context) => addReview(),
         "/reviewPage": (context) => ReviewPage()
       },
